@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> <!-- ✅ -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap'); <!-- ✅ Montserrat -->
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            background: var(--tg-theme-bg-color, #ffffff); /* ✅ fallback */
+            color: var(--tg-theme-text-color, #000000);
+        }
+        
+        #main {
+            width: 100%; padding: 20px; text-align: center;
+        }
+        
+        h1 { margin: 50px 0 10px 0; }
+        
+        img {
+            width: 70px; 
+            display: block; /* ✅ вместо margin: 30px auto */
+            margin: 30px auto;
+        }
+        
+        p {
+            width: 90%; /* ✅ адаптивно вместо 350px */
+            max-width: 350px;
+            margin: 0 auto 50px;
+        }
+        
+        button {
+            border: 0;
+            border-radius: 5px;
+            margin-top: 20px; /* ✅ */
+            height: 60px; /* ✅ px убрано */
+            width: 200px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.5s ease; /* ✅ 500ms → 0.5s */
+            background: var(--tg-theme-button-color, #0088cc); /* ✅ */
+            color: var(--tg-theme-button-text-color, #ffffff);
+        }
+        
+        button:hover { /* ✅ :hover без пробела */
+            background: var(--tg-theme-secondary-bg-color, #006699);
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>Онлайн магазин</h1>
+        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="Корзина">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <button id="buy">Купить</button>
+    </div>
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        document.getElementById('buy').onclick = function() {
+            Telegram.WebApp.showAlert('🛒 Товар в корзине!');
+            Telegram.WebApp.MainButton.setText('Оформить заказ').show();
+        };
+        
+        Telegram.WebApp.ready(); // ✅ Инициализация
+        Telegram.WebApp.expand(); // ✅ Полноэкранный режим
+    </script>
+</body>
+</html>
